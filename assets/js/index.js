@@ -34,14 +34,14 @@ class Student extends User {
   }
   
   getCourse(){
-    
+
   }
 }
 
 
 let date = new Date();
 let yearNow = date.getFullYear();
-let numOfCourse = yearNow - this.year;
+let numOfCourse = yearNow - Student.year;
   if (numOfCourse < 1 || numOfCourse > 5){
     throw new TypeError ("Wrong number!");
   }
