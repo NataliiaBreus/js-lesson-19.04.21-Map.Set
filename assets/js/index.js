@@ -1,18 +1,8 @@
 'use strict';
 class User {
-  constructor (name, surname, year) {
+  constructor (name, surname) {
     this.name = name;
     this.surname = surname;
-    this.year = year;
-  }
-  set year (newYear) {
-    if (typeof newYear !== "number"){
-      throw new TypeError();
-    }
-    this._year = newYear;
-  }
-  get year(){
-    return this._year;
   }
 
   set fullName(newFullName) {
@@ -30,26 +20,29 @@ class User {
 class Student extends User {
 
   constructor (name, surname, year){
-    super (name, surname, year)
+    super (name, surname);
+    this.year = year;
   }
-  
-  getCourse(){
-
+  set year (newYear) {
+    if (typeof newYear !== "number"){
+      throw new TypeError();
+    }
+    this._year = newYear;
+  }
+  get year(){
+    return this._year;
+  }
+  get course(){
+    const yearNow = new Date().getFullYear();
+    const numOfCourse = yearNow - this.year + 1;
+    if (numOfCourse < 1 || numOfCourse > 5){
+      throw new RangeError ("Wrong number!");
+    }
   }
 }
 
 
-let date = new Date();
-let yearNow = date.getFullYear();
-let numOfCourse = yearNow - Student.year;
-  if (numOfCourse < 1 || numOfCourse > 5){
-    throw new TypeError ("Wrong number!");
-  }
-  console.log(numOfCourse);
-
-
-
-const u = new User ('Mark', 'Smith', 2018);
+const u = new User ('Mark', 'Smith');
 const s = new Student ('Ivan', 'Ivanov', 2020);
 console.log(User);
 console.log(Student);
