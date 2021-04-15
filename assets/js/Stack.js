@@ -55,15 +55,52 @@ stack1.push(6, 7, 8, 9, 10);
 
 // проверка правильности размещения скобок
 
-
-
-function checkSequence (str) {
-    const stack = new Stack();
-stack.push ()
-    for(const symbol of str) {
-        if() {
-            
-        }
-
-    }
+const options = {
+    braces: {
+        '(' : ')',
+        '[' : ']',
+        '{' : '}',
+    },
+    isStrict: false,
 }
+
+function checkSequence (str, options) {
+    const stack = new Stack();
+    const braces = options.braces;
+    const closeBraces = Object.values(braces);
+    for(const symbol of str) {
+        /* 1. Определить открывающуюся скобку. Запушить в стек */
+
+        if(braces[symbol]) {
+            stack.push(symbol);
+            continue;
+        }
+        /* 2. Определить пуст ли стек. Вернуть false*/
+
+        if(closeBraces.includes(symbol) && stack.isEmpty) {
+            return false;
+        }
+        const lastItemFromStack = stack.pip();
+        const correctCloseBrace = braces[lastItemFromStack];
+
+        if(symbol === correctCloseBrace) {
+
+            stack.pop();
+        } else if (braces[symbol] || closeBraces.includes(symbol)) {
+            return false;
+        }
+    }
+/*
+    for(const symbol of str) {
+        if(symbol === '(') {
+            stack.push(symbol);
+        }
+        if (symbol === ')' && stack.pip() ==="(") {
+            stack.pop();
+        }
+    }
+    */
+    return stack.isEmpty;
+}
+
+console.log(checkSequence('[]', options))
