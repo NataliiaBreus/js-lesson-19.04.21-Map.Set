@@ -210,5 +210,26 @@ const translate = (str) => {
 };
 console.log(translate(inputStr));
 
+// Есть 2 объекта с пользователями и 2 массива с их сообщениями. 1)объединить пользователей и их сообщения.
 
+ const user1 = {
+     id:1,
+     name: 'John',
+     age: 18,
+ };
+ const user2 = {
+     id: 2,
+     name: 'Jane',
+     age: 24,
+ };
 
+ const johnMsgs = ['1234', 'egfewhgf', 'gefwegyuiyweiu'];
+const janeMsgs = ['fhhfk', 'hfuwyfi7yo', 'gfuywegfk', 'wjhgfjm'];
+
+ const usersMap = new Map();
+ usersMap.set(user1.id, johnMsgs);
+ usersMap.set (user2.id. janeMsgs);
+
+const getUserMsgs = (userId) => {
+    return usersMap.get(userId);
+}
