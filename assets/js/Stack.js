@@ -104,3 +104,5 @@ function checkSequence (str, options) {
 }
 
 console.log(checkSequence('[]', options))
+
+

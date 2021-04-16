@@ -167,11 +167,48 @@ while(sumCounter < number) {
 }
 console.log (sum);
 
-
-// 3 Создать числовой массив и проинициализировать его из 25 элементов
-
-const numArray = [];
-
 */
+
+const mySymbol = Symbol('test');
+
+const obj = {
+    test: 'test',
+    [mySymbol]: 5
+};
+const myMap = new Map();
+myMap.set(1, {});
+myMap.set('1', true);
+myMap.set(obj, 'testValue');
+
+
+console.log(myMap.get(1));
+
+const vocabulary = new Map();
+vocabulary.set('cat', 'кот');
+vocabulary.set('dog', 'собака');
+vocabulary.set('table', 'стол');
+vocabulary.set('screen', 'экран');
+vocabulary.set('structure', 'структура');
+vocabulary.set('algorithm', 'алгоритм');
+vocabulary.set('count', 'считать');
+vocabulary.set('set', 'установить');
+vocabulary.set('kernel', 'ядро');
+vocabulary.set('queue', 'очередь');
+
+const inputStr = 
+"Cat count Dog set queue Kernel algOrithm strUcTure TABLE";
+
+const translate = (str) => {
+    return str
+    .trim()
+    .toLowerCase()
+    .split (" ")
+    .map ((word) =>{
+        return vocabulary.has(word) ? vocabulary.get(word) : word;
+    })
+    .join(" ");
+};
+console.log(translate(inputStr));
+
 
 
