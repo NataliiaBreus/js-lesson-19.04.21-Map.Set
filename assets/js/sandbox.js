@@ -120,3 +120,18 @@ const {
 
 console.log (`Height: ${heightValue}, Width: ${widthValue}`);
 console.log (monitor);
+
+const {
+    sizes: {
+        height: {
+            scale: heightScale,
+        },
+        width: {
+            scale: widthScale,
+        },
+},
+} = monitor;
+
+console.log (`Width: ${widthScale}, Height: ${heightScale}`);
+console.log (monitor);
+
